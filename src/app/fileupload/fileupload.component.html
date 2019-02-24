@@ -1,0 +1,16 @@
+<div class="uploader" >
+  <p style="font-size: 40px">
+    <i class="fa fa-file-pdf-o"></i>
+    <i class="fa fa-file-word-o" style="padding-left: 20px;"></i>
+    <i class="fa fa-file-excel-o" style="padding-left: 20px;"></i>
+    <i class="fa fa-file-picture-o" style="padding-left: 20px;"></i>
+  </p>
+  <input type="file" (change)="upload($event.target.files)">
+</div>
+Porcentaje subido: {{porcentaje}} %
+
+
+<ng-container *ngIf="subidaExitosa">
+  Subida exitosa de archivo!
+</ng-container>
+
