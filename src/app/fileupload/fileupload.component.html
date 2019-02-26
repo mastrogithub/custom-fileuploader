@@ -1,16 +1,70 @@
-<div class="uploader" >
-  <p style="font-size: 40px">
-    <i class="fa fa-file-pdf-o"></i>
-    <i class="fa fa-file-word-o" style="padding-left: 20px;"></i>
-    <i class="fa fa-file-excel-o" style="padding-left: 20px;"></i>
-    <i class="fa fa-file-picture-o" style="padding-left: 20px;"></i>
-  </p>
-  <input type="file" (change)="upload($event.target.files)">
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-xs-4 col-md-4">
+      <div class="card" style="width: 15rem;">
+        <img class="card-img-top" src="https://cdn.pcworld.es/cmsdata/features/3689814/gratis_excel_thumb800.jpg"
+             alt="Card image cap">
+
+        <div class="card-body">
+          <h5 class="card-title">Archivo Excel</h5>
+          <p class="card-text">{{ nombreArchivo }}</p>
+          <div class="progress">
+            <div class="progress-bar"
+                 role="progressbar"
+                 [ngStyle]="{'width': porcentaje + '%'}"
+                 aria-valuenow="porcentaje"
+                 aria-valuemin="0"
+                 aria-valuemax="100">{{ porcentaje }}%
+            </div>
+          </div>
+          <br>
+          <div class="row">
+            <div class="col">
+              <button class="btn btn-success" (click)="onUploadAndProgress()" [disabled]="!selected || error">
+                <i class="fa fa-upload" aria-hidden="true"></i> Subir
+              </button>
+            </div>
+            <div class="col">
+              <button class="btn btn-secondary" (click)="onReset()">Limpiar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <input
+        #hiddenInputFile
+        type="file"
+        (change)="onSelectFile($event.target.files)"
+        accept=".xls, .xlsx, .csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        [formControl]="inputFile"
+        hidden>
+    </div>
+
+    <div class="col-xs-8 col-md-8">
+      <div class="row">
+        <div class="col">
+          <button class="btn btn-primary" (click)="onCallHiddenInput()">
+            <i class="fa fa-file-excel-o"></i> Examinar...
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+  <div class="row">
+    <ng-container *ngIf="subidaExitosa">
+      Subida exitosa de archivo!
+    </ng-container>
+
+    <ng-container *ngIf="error">
+      {{ errorMessage }}
+    </ng-container>
+  </div>
+
 </div>
-Porcentaje subido: {{porcentaje}} %
 
 
-<ng-container *ngIf="subidaExitosa">
-  Subida exitosa de archivo!
-</ng-container>
+
 
