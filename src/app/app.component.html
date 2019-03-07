@@ -1,4 +1,8 @@
-<app-fileupload></app-fileupload>
+<app-fileupload
+  [MAX_SIZE]="20"
+  [fileExtension]="'.xls, .xlsx, .csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'"
+  [API_URL]="'http://localhost:3000/upload'"
+></app-fileupload>
 <br>
 <hr>
 <app-filedownload></app-filedownload>

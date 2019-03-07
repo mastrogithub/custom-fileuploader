@@ -35,7 +35,7 @@
         #hiddenInputFile
         type="file"
         (change)="onSelectFile($event.target.files)"
-        accept=".xls, .xlsx, .csv, application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+        [accept]="fileExtension"
         [formControl]="inputFile"
         hidden>
     </div>

@@ -8,6 +8,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {ReactiveFormsModule} from '@angular/forms';
 import {UploadService} from './services/upload.service';
 import { FiledownloadComponent } from './filedownload/filedownload.component';
+import {EncoderService} from './services/encoder.service';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,7 @@ import { FiledownloadComponent } from './filedownload/filedownload.component';
     AngularFontAwesomeModule,
     ReactiveFormsModule
   ],
-  providers: [UploadService],
+  providers: [UploadService, EncoderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
